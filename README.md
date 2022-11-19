@@ -4,7 +4,7 @@ Python program to easily operate Ultimaker 3D printers with commands. Successor 
 ## Setup
 1. Connect the printer to the local network and fix the IP address.
 2. On a PC connected to the same network, access `http://{IP address}` to open the SwaggerUI and perform the authentication process and obtain a username and password.
-3. In the working directory, create a yaml file like:
+3. In the working directory, create a yaml file named `config.yaml` like:
 
     ```YAML
     MyPrinterName:
