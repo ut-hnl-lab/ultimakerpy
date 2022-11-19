@@ -1,5 +1,6 @@
 from contextlib import contextmanager
 import json
+from tkinter import Tk
 import tkinter.filedialog
 from typing import Any, Callable, Dict, Iterator
 import warnings
@@ -68,8 +69,11 @@ class _Printer:
                 self._system.start_job(fileobj=f)
 
     def print_from_dialog(self) -> None:
+        Tk().withdraw()
         filepath = tkinter.filedialog.askopenfilename(
             filetypes=PRINTABLE_FORMATS)
+        if filepath == '':
+            return
         self.print(filepath)
 
     def pause(self) -> None:
