@@ -25,9 +25,12 @@ def _parse_endpoints(endpoints, base_path):
             cats.add(cat)
 
         key = ep['label']
-        url[cat].update({key: urljoin(base_path, ep['path']) \
-                         if ep['path'] is not None else base_path[:-1]})
-        lim[cat].update({key: ep['inputlim']})
+        if 'path' in ep.keys():
+            url[cat].update({key: urljoin(base_path, ep['path'])})
+        else:
+            url[cat].update({key: base_path[:-1]})
+        if 'inputlim' in ep.keys():
+            lim[cat].update({key: ep['inputlim']})
     return (url, lim)
 
 

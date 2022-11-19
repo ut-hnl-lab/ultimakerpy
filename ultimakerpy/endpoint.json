@@ -18,14 +18,12 @@
                         {
                             "path": "position",
                             "label": "pos",
-                            "category": "head",
-                            "inputlim": null
+                            "category": "head"
                         },
                         {
                             "path": "position",
                             "label": "pos",
-                            "category": "bed",
-                            "inputlim": null
+                            "category": "bed"
                         },
                         {
                             "path": "position/x",
@@ -43,79 +41,74 @@
                             "path": "position/z",
                             "label": "pos_z",
                             "category": "bed",
-                            "inputlim": [0.1, 190.0]
+                            "inputlim": [0.05, 200.0]
                         },
                         {
                             "path": "speed",
                             "label": "speed",
-                            "category": "head",
-                            "inputlim": null
+                            "category": "head"
                         },
                         {
                             "path": "speed",
                             "label": "speed",
-                            "category": "bed",
-                            "inputlim": null
+                            "category": "bed"
                         },
                         {
                             "path": "max_speed/x",
                             "label": "speed_x",
                             "category": "head",
-                            "inputlim": [1.0, 200.0]
+                            "inputlim": [0.1, 424.2]
                         },
                         {
                             "path": "max_speed/y",
                             "label": "speed_y",
                             "category": "head",
-                            "inputlim": [1.0, 200.0]
+                            "inputlim": [0.1, 424.2]
                         },
                         {
                             "path": "max_speed/z",
                             "label": "speed_z",
                             "category": "bed",
-                            "inputlim": [1.0, 200.0]
+                            "inputlim": [0.1, 424.2]
                         },
                         {
                             "path": "acceleration",
                             "label": "accel",
                             "category": "head",
-                            "inputlim": [1.0, 5000.0]
+                            "inputlim": [0.1, 9999.9]
                         },
                         {
                             "path": "jerk",
                             "label": "jerk",
-                            "category": "head",
-                            "inputlim": null
+                            "category": "head"
                         },
                         {
                             "path": "jerk",
                             "label": "jerk",
-                            "category": "bed",
-                            "inputlim": null
+                            "category": "bed"
                         },
                         {
                             "path": "jerk/x",
                             "label": "jerk_x",
                             "category": "head",
-                            "inputlim": [1.0, 5000.0]
+                            "inputlim": [0.001, 9999.9]
                         },
                         {
                             "path": "jerk/y",
                             "label": "jerk_y",
                             "category": "head",
-                            "inputlim": [1.0, 5000.0]
+                            "inputlim": [0.001, 9999.9]
                         },
                         {
                             "path": "jerk/z",
                             "label": "jerk_z",
                             "category": "bed",
-                            "inputlim": [1.0, 1000.0]
+                            "inputlim": [0.001, 9999.9]
                         },
                         {
                             "path": "fan",
                             "label": "speed",
-                            "category": "fan",
-                            "inputlim": null
+                            "category": "fan"
                         }
                     ],
                     "items": [
@@ -129,19 +122,19 @@
                                             "path": "max_speed",
                                             "label": "speed",
                                             "category": "feeder1",
-                                            "inputlim": null
+                                            "inputlim": [0.001, 45.0]
                                         },
                                         {
                                             "path": "acceleration",
                                             "label": "accel",
                                             "category": "feeder1",
-                                            "inputlim": null
+                                            "inputlim": [0.1, 9999.9]
                                         },
                                         {
                                             "path": "jerk",
                                             "label": "jerk",
                                             "category": "feeder1",
-                                            "inputlim": null
+                                            "inputlim": [0.001, 9999.9]
                                         }
                                     ]
                                 },
@@ -151,14 +144,13 @@
                                         {
                                             "path": "temperature/current",
                                             "label": "cur_temp",
-                                            "category": "nozzle1",
-                                            "inputlim": null
+                                            "category": "nozzle1"
                                         },
                                         {
                                             "path": "temperature/target",
                                             "label": "tgt_temp",
                                             "category": "nozzle1",
-                                            "inputlim": [0, 300]
+                                            "inputlim": [0, 365.0]
                                         }
                                     ]
                                 }
@@ -174,19 +166,19 @@
                                             "path": "max_speed",
                                             "label": "speed",
                                             "category": "feeder2",
-                                            "inputlim": null
+                                            "inputlim": [0.001, 45.0]
                                         },
                                         {
                                             "path": "acceleration",
                                             "label": "accel",
                                             "category": "feeder2",
-                                            "inputlim": null
+                                            "inputlim": [0.1, 9999.9]
                                         },
                                         {
                                             "path": "jerk",
                                             "label": "jerk",
                                             "category": "feeder2",
-                                            "inputlim": null
+                                            "inputlim": [0.001, 9999.9]
                                         }
                                     ]
                                 },
@@ -196,14 +188,13 @@
                                         {
                                             "path": "temperature/current",
                                             "label": "cur_temp",
-                                            "category": "nozzle2",
-                                            "inputlim": null
+                                            "category": "nozzle2"
                                         },
                                         {
                                             "path": "temperature/target",
                                             "label": "tgt_temp",
                                             "category": "nozzle2",
-                                            "inputlim": [0, 300]
+                                            "inputlim": [0, 365.0]
                                         }
                                     ]
                                 }
@@ -218,20 +209,19 @@
                         {
                             "path": "temperature/current",
                             "label": "cur_temp",
-                            "category": "bed",
-                            "inputlim": null
+                            "category": "bed"
                         },
                         {
                             "path": "temperature/target",
                             "label": "tgt_temp",
                             "category": "bed",
-                            "inputlim": [0, 100]
+                            "inputlim": [0, 200.0]
                         },
                         {
                             "path": "pre_heat",
                             "label": "pre_temp",
                             "category": "bed",
-                            "inputlim": [0, 100]
+                            "inputlim": [0, 200.0]
                         }
                     ]
                 },
@@ -252,10 +242,8 @@
             "path": "print_job/",
             "endpoints": [
                 {
-                    "path": null,
                     "label": "job",
-                    "category": "system",
-                    "inputlim": null
+                    "category": "system"
                 },
                 {
                     "path": "state",
@@ -271,8 +259,7 @@
                 {
                     "path": "verify",
                     "label": "verify",
-                    "category": "system",
-                    "inputlim": null
+                    "category": "system"
                 }
             ]
         },
@@ -282,8 +269,7 @@
                 {
                     "path": "current",
                     "label": "amb_temp",
-                    "category": "system",
-                    "inputlim": null
+                    "category": "system"
                 }
             ]
         }
