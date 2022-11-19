@@ -24,7 +24,7 @@ class _Printer:
         with open(ENDPOINT, 'r') as f:
             items = json.load(f)[machine_type]
 
-        ip_adress = config['ip_adress']
+        ip_address = config['ip_address']
         username = config.get('username', None)
         password = config.get('password', None)
 
@@ -38,8 +38,8 @@ class _Printer:
 
         self._url, self._lim = parse_endpoints(
             items=items,
-            base_path='http://{ip_adress}/api/{api_version}/'.format(
-                ip_adress=ip_adress,
+            base_path='http://{ip_address}/api/{api_version}/'.format(
+                ip_address=ip_address,
                 api_version=api_version))
 
         self._system = System(self._client, self._url['system'],

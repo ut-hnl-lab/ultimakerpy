@@ -8,7 +8,7 @@ Python program to easily operate Ultimaker 3D printers with commands. Successor 
 
     ```YAML
     MyPrinterName:
-        ip_adress: 192.168.xxx.xxx
+        ip_address: 192.168.xxx.xxx
         username: xxxxxxxxxxx
         password: xxxxxxxxxxx
 
