@@ -10,6 +10,8 @@ def _relsource(relpath: str) -> str:
     return os.path.abspath(os.path.join(os.getcwd(), relpath))
 
 
+CAMSTREAM_PY_PATH = _abssource('camstream.py')
+
 ENDPOINT = _abssource('endpoint.json')
 CONFIG = _relsource('config.yaml')
 PRINTABLE_FORMATS = [
