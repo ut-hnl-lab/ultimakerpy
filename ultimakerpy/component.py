@@ -30,9 +30,7 @@ class System:
     def start_job(self, fileobj: BinaryIO) -> None:
         self._client.post(self._url['job'],
                           files={'job_name': format(datetime.now()),
-                                 'file': fileobj},
-                          headers={'Content-Type': CTYPE.MP_FD,
-                                   'Accept': CTYPE.APP_JSON})
+                                 'file': fileobj})
 
     def set_job_state(self, value: str) -> None:
         _validate_choice(value, self._lim['state'])
@@ -62,8 +60,10 @@ class Peripherals:
 
     def camera_streaming(self, name: str = 'Internal Camera') -> None:
         proc = subprocess.Popen(
-            'python "{path}" --name "{name}" --url {url}'.format(
-                path=CAMSTREAM_PY_PATH, name=name, url=self._url['cam_stream']))
+            'python "{path}" {target} --name "{name}"'.format(
+                path=CAMSTREAM_PY_PATH,
+                target=self._url['cam_stream'],
+                name=name))
         atexit.register(proc.kill)
         return proc
 
