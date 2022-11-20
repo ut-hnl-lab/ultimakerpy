@@ -5,7 +5,7 @@ from ultimakerpy.client import UMClient
 from ultimakerpy.datalog import DataLogger
 from ultimakerpy.printer import UMS3
 
-
+NAME = 'test'
 URL = 'https://pokeapi.co/api/v2/pokemon/{}'
 
 
@@ -26,7 +26,7 @@ def test_datalogger():
 
 def test_s3_datalogger():
     print('test_s3_datalogger')
-    printer = UMS3(name='hnl')
+    printer = UMS3(name=NAME)
     targets = {
         'status': printer.status,
         'job_state': printer.job_state,

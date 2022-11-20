@@ -3,7 +3,8 @@ from ultimakerpy.timer import Timer
 from ultimakerpy.printer import UMS3
 from ultimakerpy.const import JobState
 
-NUM_PRINTLAYER = 20
+NAME = 'test'
+NUM_PRINTLAYER = 5
 PITCH = 0.2
 
 
@@ -24,7 +25,7 @@ def layer_reached(pos, n):
 
 def test_print():
     print('test_print')
-    printer = UMS3(name='hnl')
+    printer = UMS3(name=NAME)
     print('accessibility', printer.is_accessible())
 
     targets = {'job_state': printer.job_state, 'bed_pos': printer.bed.position}
@@ -39,7 +40,7 @@ def test_print():
         print('start')
 
         for n in range(1, NUM_PRINTLAYER+1):
-            timer.wait_for_datalog('bedpos', lambda x: layer_reached(x, n))
+            timer.wait_for_datalog('bed_pos', lambda x: layer_reached(x, n))
             print('layer', n)
 
         printer.pause()

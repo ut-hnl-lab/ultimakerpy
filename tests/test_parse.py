@@ -5,7 +5,7 @@ from ultimakerpy import UMS3
 from ultimakerpy.const import CONFIG, ENDPOINT
 from ultimakerpy.parse import parse_endpoints
 
-NAME = 'main'
+NAME = 'test'
 MTYPE = 's3'
 
 
