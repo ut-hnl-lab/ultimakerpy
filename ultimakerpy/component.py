@@ -4,7 +4,7 @@ import subprocess
 from typing import BinaryIO, Dict, Optional
 
 from .client import UMClient
-from .const import CTYPE
+from .const import CAMSTREAM_PY_PATH, CTYPE
 from .exceptions import ChoiceValidationError, RangeValidationError
 
 
@@ -62,8 +62,8 @@ class Peripherals:
 
     def camera_streaming(self, name: str = 'Internal Camera') -> None:
         proc = subprocess.Popen(
-            'python camstream.py --name {name} --url {url}'.format(
-                name=name, url=self._url['cam_stream']))
+            'python "{path}" --name "{name}" --url {url}'.format(
+                path=CAMSTREAM_PY_PATH, name=name, url=self._url['cam_stream']))
         atexit.register(proc.kill)
         return proc
 
