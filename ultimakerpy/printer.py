@@ -8,7 +8,7 @@ import warnings
 import yaml
 
 from .client import UMClient
-from .component import LED, Bed, Fan, Feeder, Head, Nozzle, System
+from .component import LED, Bed, Fan, Feeder, Head, Nozzle, Peripherals, System
 from .const import CONFIG, ENDPOINT, PRINTABLE_FORMATS, JobState, PrinterStatus
 from .datalog import DataLogger
 from .exceptions import PrintJobWarning, RequestError
@@ -28,7 +28,6 @@ class _Printer:
         username = config.get('username', None)
         password = config.get('password', None)
 
-        api_version = config.get('api_version', 'v1')
         request_timeout = config.get('request_timeout', 30)
         self.timer_timeout = config.get('timer_timeout', 600)
         self.logging_interval = config.get('logging_interval', 1.0)
@@ -38,9 +37,7 @@ class _Printer:
 
         self._url, self._lim = parse_endpoints(
             items=items,
-            base_path='http://{ip_address}/api/{api_version}/'.format(
-                ip_address=ip_address,
-                api_version=api_version))
+            base_path='http://{ip_address}'.format(ip_address=ip_address))
 
         self._system = System(self._client, self._url['system'],
                               self._lim['system'])
@@ -101,9 +98,6 @@ class _Printer:
         except RequestError:
             return False
 
-    def ambient_temperature(self) -> float:
-        return self._system.ambient_temperature()
-
 
 class UMS3(_Printer):
 
@@ -122,6 +116,8 @@ class UMS3(_Printer):
                                    self._lim['feeder2'])
         self.__sub_nozzle = Nozzle(self._client, self._url['nozzle2'],
                                    self._lim['nozzle2'])
+        self.__peripherals = Peripherals(self._client, self._url['periph'],
+                                         self._lim['periph'])
 
     @property
     def bed(self) -> 'Bed':
@@ -154,3 +150,7 @@ class UMS3(_Printer):
     @property
     def sub_nozzle(self) -> 'Nozzle':
         return self.__sub_nozzle
+
+    @property
+    def peripherals(self) -> 'Peripherals':
+        return self.__peripherals
