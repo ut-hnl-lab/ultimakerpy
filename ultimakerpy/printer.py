@@ -22,7 +22,7 @@ class _Printer:
             config: dict = yaml.safe_load(f)[config_key]
 
         with open(ENDPOINT, 'r') as f:
-            items = json.load(f)[machine_type]
+            item = json.load(f)[machine_type]
 
         ip_address = config['ip_address']
         username = config.get('username', None)
@@ -36,7 +36,7 @@ class _Printer:
                                 password=password)
 
         self._url, self._lim = parse_endpoints(
-            items=items,
+            item=item,
             base_path='http://{ip_address}'.format(ip_address=ip_address))
 
         self._system = System(self._client, self._url['system'],
