@@ -61,8 +61,9 @@ class Peripherals:
         self._lim = lim
 
     def camera_streaming(self, name: str = 'Internal Camera') -> None:
-        proc = subprocess.Popen('python camwindow.py {url} {name}'.format(
-                                self._url['cam_stream'], name))
+        proc = subprocess.Popen(
+            'python camstream.py --name {name} --url {url}'.format(
+                name=name, url=self._url['cam_stream']))
         atexit.register(proc.kill)
         return proc
 
