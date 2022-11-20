@@ -1,277 +1,295 @@
 {
-    "s3": [
-        {
-            "path": "printer/",
-            "endpoints": [
-                {
-                    "path": "status",
-                    "label": "status",
-                    "category": "system",
-                    "inputlim": ["booting", "waiting_for_peripherals", "idle",
-                                 "printing","error", "maintenance"]
-                }
-            ],
-            "items": [
-                {
-                    "path": "heads/0/",
-                    "endpoints": [
-                        {
-                            "path": "position",
-                            "label": "pos",
-                            "category": "head"
-                        },
-                        {
-                            "path": "position",
-                            "label": "pos",
-                            "category": "bed"
-                        },
-                        {
-                            "path": "position/x",
-                            "label": "pos_x",
-                            "category": "head",
-                            "inputlim": [0.0, 200.0]
-                        },
-                        {
-                            "path": "position/y",
-                            "label": "pos_y",
-                            "category": "head",
-                            "inputlim": [0.0, 200.0]
-                        },
-                        {
-                            "path": "position/z",
-                            "label": "pos_z",
-                            "category": "bed",
-                            "inputlim": [0.05, 200.0]
-                        },
-                        {
-                            "path": "speed",
-                            "label": "speed",
-                            "category": "head"
-                        },
-                        {
-                            "path": "speed",
-                            "label": "speed",
-                            "category": "bed"
-                        },
-                        {
-                            "path": "max_speed/x",
-                            "label": "speed_x",
-                            "category": "head",
-                            "inputlim": [0.1, 424.2]
-                        },
-                        {
-                            "path": "max_speed/y",
-                            "label": "speed_y",
-                            "category": "head",
-                            "inputlim": [0.1, 424.2]
-                        },
-                        {
-                            "path": "max_speed/z",
-                            "label": "speed_z",
-                            "category": "bed",
-                            "inputlim": [0.1, 424.2]
-                        },
-                        {
-                            "path": "acceleration",
-                            "label": "accel",
-                            "category": "head",
-                            "inputlim": [0.1, 9999.9]
-                        },
-                        {
-                            "path": "jerk",
-                            "label": "jerk",
-                            "category": "head"
-                        },
-                        {
-                            "path": "jerk",
-                            "label": "jerk",
-                            "category": "bed"
-                        },
-                        {
-                            "path": "jerk/x",
-                            "label": "jerk_x",
-                            "category": "head",
-                            "inputlim": [0.001, 9999.9]
-                        },
-                        {
-                            "path": "jerk/y",
-                            "label": "jerk_y",
-                            "category": "head",
-                            "inputlim": [0.001, 9999.9]
-                        },
-                        {
-                            "path": "jerk/z",
-                            "label": "jerk_z",
-                            "category": "bed",
-                            "inputlim": [0.001, 9999.9]
-                        },
-                        {
-                            "path": "fan",
-                            "label": "speed",
-                            "category": "fan"
-                        }
-                    ],
-                    "items": [
-                        {
-                            "path": "extruders/0/",
-                            "items": [
-                                {
-                                    "path": "feeder/",
-                                    "endpoints": [
-                                        {
-                                            "path": "max_speed",
-                                            "label": "speed",
-                                            "category": "feeder1",
-                                            "inputlim": [0.001, 45.0]
-                                        },
-                                        {
-                                            "path": "acceleration",
-                                            "label": "accel",
-                                            "category": "feeder1",
-                                            "inputlim": [0.1, 9999.9]
-                                        },
-                                        {
-                                            "path": "jerk",
-                                            "label": "jerk",
-                                            "category": "feeder1",
-                                            "inputlim": [0.001, 9999.9]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "path": "hotend/",
-                                    "endpoints": [
-                                        {
-                                            "path": "temperature/current",
-                                            "label": "cur_temp",
-                                            "category": "nozzle1"
-                                        },
-                                        {
-                                            "path": "temperature/target",
-                                            "label": "tgt_temp",
-                                            "category": "nozzle1",
-                                            "inputlim": [0, 365.0]
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "path": "extruders/1/",
-                            "items": [
-                                {
-                                    "path": "feeder/",
-                                    "endpoints": [
-                                        {
-                                            "path": "max_speed",
-                                            "label": "speed",
-                                            "category": "feeder2",
-                                            "inputlim": [0.001, 45.0]
-                                        },
-                                        {
-                                            "path": "acceleration",
-                                            "label": "accel",
-                                            "category": "feeder2",
-                                            "inputlim": [0.1, 9999.9]
-                                        },
-                                        {
-                                            "path": "jerk",
-                                            "label": "jerk",
-                                            "category": "feeder2",
-                                            "inputlim": [0.001, 9999.9]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "path": "hotend/",
-                                    "endpoints": [
-                                        {
-                                            "path": "temperature/current",
-                                            "label": "cur_temp",
-                                            "category": "nozzle2"
-                                        },
-                                        {
-                                            "path": "temperature/target",
-                                            "label": "tgt_temp",
-                                            "category": "nozzle2",
-                                            "inputlim": [0, 365.0]
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "path": "bed/",
-                    "label": "bed",
-                    "endpoints": [
-                        {
-                            "path": "temperature/current",
-                            "label": "cur_temp",
-                            "category": "bed"
-                        },
-                        {
-                            "path": "temperature/target",
-                            "label": "tgt_temp",
-                            "category": "bed",
-                            "inputlim": [0, 200.0]
-                        },
-                        {
-                            "path": "pre_heat",
-                            "label": "pre_temp",
-                            "category": "bed",
-                            "inputlim": [0, 200.0]
-                        }
-                    ]
-                },
-                {
-                    "path": "led/",
-                    "endpoints": [
-                        {
-                            "path": "brightness",
-                            "label": "brightness",
-                            "category": "led",
-                            "inputlim": [0, 100]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "print_job/",
-            "endpoints": [
-                {
-                    "label": "job",
-                    "category": "system"
-                },
-                {
-                    "path": "state",
-                    "label": "state",
-                    "category": "system",
-                    "inputlim": ["pause", "abort", "print"]
-                }
-            ]
-        },
-        {
-            "path": "auth/",
-            "endpoints": [
-                {
-                    "path": "verify",
-                    "label": "verify",
-                    "category": "system"
-                }
-            ]
-        },
-        {
-            "path": "ambient_temperature",
-            "endpoints": [
-                {
-                    "path": "current",
-                    "label": "amb_temp",
-                    "category": "system"
-                }
-            ]
-        }
-    ]
+    "s3": {
+        "path": "",
+        "items": [
+            {
+                "path": ":8080",
+                "endpoints": [
+                    {
+                        "path": "/?action=stream",
+                        "label": "cam_stream",
+                        "category": "periph"
+                    }
+                ]
+            },
+            {
+                "path": "/api/v1",
+                "items": [
+                    {
+                        "path": "/printer",
+                        "endpoints": [
+                            {
+                                "path": "/status",
+                                "label": "status",
+                                "category": "system",
+                                "inputlim": ["booting", "waiting_for_peripherals", "idle",
+                                            "printing","error", "maintenance"]
+                            }
+                        ],
+                        "items": [
+                            {
+                                "path": "heads/0",
+                                "endpoints": [
+                                    {
+                                        "path": "/position",
+                                        "label": "pos",
+                                        "category": "head"
+                                    },
+                                    {
+                                        "path": "/position",
+                                        "label": "pos",
+                                        "category": "bed"
+                                    },
+                                    {
+                                        "path": "/position/x",
+                                        "label": "pos_x",
+                                        "category": "head",
+                                        "inputlim": [0.0, 200.0]
+                                    },
+                                    {
+                                        "path": "/position/y",
+                                        "label": "pos_y",
+                                        "category": "head",
+                                        "inputlim": [0.0, 200.0]
+                                    },
+                                    {
+                                        "path": "/position/z",
+                                        "label": "pos_z",
+                                        "category": "bed",
+                                        "inputlim": [0.05, 200.0]
+                                    },
+                                    {
+                                        "path": "/speed",
+                                        "label": "speed",
+                                        "category": "head"
+                                    },
+                                    {
+                                        "path": "/speed",
+                                        "label": "speed",
+                                        "category": "bed"
+                                    },
+                                    {
+                                        "path": "/max_speed/x",
+                                        "label": "speed_x",
+                                        "category": "head",
+                                        "inputlim": [0.1, 424.2]
+                                    },
+                                    {
+                                        "path": "/max_speed/y",
+                                        "label": "speed_y",
+                                        "category": "head",
+                                        "inputlim": [0.1, 424.2]
+                                    },
+                                    {
+                                        "path": "/max_speed/z",
+                                        "label": "speed_z",
+                                        "category": "bed",
+                                        "inputlim": [0.1, 424.2]
+                                    },
+                                    {
+                                        "path": "/acceleration",
+                                        "label": "accel",
+                                        "category": "head",
+                                        "inputlim": [0.1, 9999.9]
+                                    },
+                                    {
+                                        "path": "/jerk",
+                                        "label": "jerk",
+                                        "category": "head"
+                                    },
+                                    {
+                                        "path": "/jerk",
+                                        "label": "jerk",
+                                        "category": "bed"
+                                    },
+                                    {
+                                        "path": "/jerk/x",
+                                        "label": "jerk_x",
+                                        "category": "head",
+                                        "inputlim": [0.001, 9999.9]
+                                    },
+                                    {
+                                        "path": "/jerk/y",
+                                        "label": "jerk_y",
+                                        "category": "head",
+                                        "inputlim": [0.001, 9999.9]
+                                    },
+                                    {
+                                        "path": "/jerk/z",
+                                        "label": "jerk_z",
+                                        "category": "bed",
+                                        "inputlim": [0.001, 9999.9]
+                                    },
+                                    {
+                                        "path": "/fan",
+                                        "label": "speed",
+                                        "category": "fan"
+                                    }
+                                ],
+                                "items": [
+                                    {
+                                        "path": "/extruders/0",
+                                        "items": [
+                                            {
+                                                "path": "/feeder",
+                                                "endpoints": [
+                                                    {
+                                                        "path": "/max_speed",
+                                                        "label": "speed",
+                                                        "category": "feeder1",
+                                                        "inputlim": [0.001, 45.0]
+                                                    },
+                                                    {
+                                                        "path": "/acceleration",
+                                                        "label": "accel",
+                                                        "category": "feeder1",
+                                                        "inputlim": [0.1, 9999.9]
+                                                    },
+                                                    {
+                                                        "path": "/jerk",
+                                                        "label": "jerk",
+                                                        "category": "feeder1",
+                                                        "inputlim": [0.001, 9999.9]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "path": "/hotend",
+                                                "endpoints": [
+                                                    {
+                                                        "path": "/temperature/current",
+                                                        "label": "cur_temp",
+                                                        "category": "nozzle1"
+                                                    },
+                                                    {
+                                                        "path": "/temperature/target",
+                                                        "label": "tgt_temp",
+                                                        "category": "nozzle1",
+                                                        "inputlim": [0, 365.0]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "path": "/extruders/1",
+                                        "items": [
+                                            {
+                                                "path": "/feeder",
+                                                "endpoints": [
+                                                    {
+                                                        "path": "/max_speed",
+                                                        "label": "speed",
+                                                        "category": "feeder2",
+                                                        "inputlim": [0.001, 45.0]
+                                                    },
+                                                    {
+                                                        "path": "/acceleration",
+                                                        "label": "accel",
+                                                        "category": "feeder2",
+                                                        "inputlim": [0.1, 9999.9]
+                                                    },
+                                                    {
+                                                        "path": "/jerk",
+                                                        "label": "jerk",
+                                                        "category": "feeder2",
+                                                        "inputlim": [0.001, 9999.9]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "path": "/hotend",
+                                                "endpoints": [
+                                                    {
+                                                        "path": "/temperature/current",
+                                                        "label": "cur_temp",
+                                                        "category": "nozzle2"
+                                                    },
+                                                    {
+                                                        "path": "/temperature/target",
+                                                        "label": "tgt_temp",
+                                                        "category": "nozzle2",
+                                                        "inputlim": [0, 365.0]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "path": "/bed",
+                                "label": "bed",
+                                "endpoints": [
+                                    {
+                                        "path": "/temperature/current",
+                                        "label": "cur_temp",
+                                        "category": "bed"
+                                    },
+                                    {
+                                        "path": "/temperature/target",
+                                        "label": "tgt_temp",
+                                        "category": "bed",
+                                        "inputlim": [0, 200.0]
+                                    },
+                                    {
+                                        "path": "/pre_heat",
+                                        "label": "pre_temp",
+                                        "category": "bed",
+                                        "inputlim": [0, 200.0]
+                                    }
+                                ]
+                            },
+                            {
+                                "path": "/led",
+                                "endpoints": [
+                                    {
+                                        "path": "/brightness",
+                                        "label": "brightness",
+                                        "category": "led",
+                                        "inputlim": [0, 100]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "path": "/print_job",
+                        "endpoints": [
+                            {
+                                "label": "job",
+                                "category": "system"
+                            },
+                            {
+                                "path": "/state",
+                                "label": "state",
+                                "category": "system",
+                                "inputlim": ["pause", "abort", "print"]
+                            }
+                        ]
+                    },
+                    {
+                        "path": "/auth",
+                        "endpoints": [
+                            {
+                                "path": "/verify",
+                                "label": "verify",
+                                "category": "system"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "/ambient_temperature",
+                        "endpoints": [
+                            {
+                                "path": "/current",
+                                "label": "amb_temp",
+                                "category": "periph"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
 }
