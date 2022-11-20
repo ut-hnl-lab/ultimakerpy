@@ -15,8 +15,6 @@ Python program to easily operate Ultimaker 3D printers with commands. Successor 
         logging_interval: 1.0
         request_timeout: 3.0
         timer_timeout: 300
-
-        api_version: v1
     ```
 
 4. Verify the connection with the following command:
@@ -70,6 +68,7 @@ targets = {
 }
 
 printer.print_from_dialog()  # select file to print
+printer.peripherals.camera_streaming()
 with printer.data_logger('output2.csv', targets) as dl:
     timer = dl.get_timer()
 
