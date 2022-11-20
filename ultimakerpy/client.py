@@ -148,9 +148,9 @@ class _BatchClient:
         resp = await self._session.post(*args, **kwargs)
         return await self._parse_response(resp)
 
-    def _parse_response(self, resp):
+    async def _parse_response(self, resp):
         code = resp.status
-        respj = resp.json()
+        respj = await resp.json()
         if code > 400:
             raise RequestError('status code {}: {}'.format(code, respj))
         return respj
