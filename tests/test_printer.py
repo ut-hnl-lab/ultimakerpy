@@ -30,6 +30,7 @@ def test_print():
     targets = {'job_state': printer.job_state, 'bed_pos': printer.bed.position}
 
     printer.print('./tests/tp.ufp')
+    printer.peripherals.camera_streaming()
     with printer.data_logger('test_print.csv', targets) as dl:
 
         timer = dl.get_timer()
