@@ -1,19 +1,16 @@
-from urllib.parse import urljoin
-
-
-def parse_endpoints(items, base_path='', url={}, lim={}):
-    for item in items:
-        path = urljoin(base_path, item['path'])
-        if 'endpoints' in item.keys():
-            u, l = _parse_endpoints(item['endpoints'], path)
-            url = _merge_subdict(url, u)
-            lim = _merge_subdict(lim, l)
-        if 'items' in item.keys():
-            url, lim = parse_endpoints(item['items'], path, url, lim)
+def parse_endpoints(item, base_path='', url={}, lim={}):
+    path = base_path + item['path']
+    if 'endpoints' in item.keys():
+        u, l = _collect_item_endpoints(item['endpoints'], path)
+        url = _merge_subdict(url, u)
+        lim = _merge_subdict(lim, l)
+    if 'items' in item.keys():
+        for item in item['items']:
+            url, lim = parse_endpoints(item, path, url, lim)
     return url, lim
 
 
-def _parse_endpoints(endpoints, base_path):
+def _collect_item_endpoints(endpoints, base_path):
     url = dict()
     lim = dict()
     cats = set()
@@ -26,9 +23,9 @@ def _parse_endpoints(endpoints, base_path):
 
         key = ep['label']
         if 'path' in ep.keys():
-            url[cat].update({key: urljoin(base_path, ep['path'])})
+            url[cat].update({key: base_path + ep['path']})
         else:
-            url[cat].update({key: base_path[:-1]})
+            url[cat].update({key: base_path})
         if 'inputlim' in ep.keys():
             lim[cat].update({key: ep['inputlim']})
     return (url, lim)
