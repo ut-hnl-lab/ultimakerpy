@@ -30,7 +30,7 @@ def test_s3_datalogger():
     targets = {
         'status': printer.status,
         'job_state': printer.job_state,
-        'amb_temp': printer.ambient_temperature,
+        'amb_temp': printer.peripherals.ambient_temperature,
         'head_pos_x': printer.head.position_x,
         'head_pos_y': printer.head.position_y,
         'head_spd_x': printer.head.max_speed_x,
