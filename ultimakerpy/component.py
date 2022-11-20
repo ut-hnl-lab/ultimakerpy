@@ -1,4 +1,6 @@
+import atexit
 from datetime import datetime
+import subprocess
 from typing import BinaryIO, Dict, Optional
 
 from .client import UMClient
@@ -49,6 +51,20 @@ class System:
     def verify(self) -> Dict[str, str]:
         return self._client.get(self._url['verify'],
                                 headers={'Accept': CTYPE.APP_JSON})
+
+
+class Peripherals:
+
+    def __init__(self, client: 'UMClient', url: Dict, lim: Dict) -> None:
+        self._client = client
+        self._url = url
+        self._lim = lim
+
+    def camera_streaming(self, name: str = 'Internal Camera') -> None:
+        proc = subprocess.Popen('python camwindow.py {url} {name}'.format(
+                                self._url['cam_stream'], name))
+        atexit.register(proc.kill)
+        return proc
 
     def ambient_temperature(self) -> float:
         return self._client.get(self._url['amb_temp'],
@@ -125,7 +141,9 @@ class Head:
                          headers={'Content-Type': CTYPE.APP_JSON,
                                   'Accept': CTYPE.APP_JSON})
 
-    def limit_speed_to(self, x_value: Optional[float] = None,
+    def limit_speed_to(
+            self,
+            x_value: Optional[float] = None,
             y_value: Optional[float] = None) -> None:
         if x_value is not None:
             _validate_range(x_value, *self._lim['speed_x'])
