@@ -9,6 +9,7 @@ def http_streaming(url: str, name: str) -> None:
         while(True):
             frame = cap.read()[1]
             cv2.imshow(name, frame)
+            cv2.waitKey(1)
     finally:
         cap.release()
         cv2.destroyAllWindows()
