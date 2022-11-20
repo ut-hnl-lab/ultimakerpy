@@ -28,7 +28,7 @@
                         ],
                         "items": [
                             {
-                                "path": "heads/0",
+                                "path": "/heads/0",
                                 "endpoints": [
                                     {
                                         "path": "/position",
@@ -50,13 +50,13 @@
                                         "path": "/position/y",
                                         "label": "pos_y",
                                         "category": "head",
-                                        "inputlim": [0.0, 200.0]
+                                        "inputlim": [0.0, 195.0]
                                     },
                                     {
                                         "path": "/position/z",
                                         "label": "pos_z",
                                         "category": "bed",
-                                        "inputlim": [0.05, 200.0]
+                                        "inputlim": [0.05, 216.0]
                                     },
                                     {
                                         "path": "/speed",
