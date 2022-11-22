@@ -1,4 +1,3 @@
-from enum import Enum
 import os
 
 
@@ -20,7 +19,7 @@ PRINTABLE_FORMATS = [
 ]
 
 
-class CTYPE:
+class Ctype:
     APP_JSON = 'application/json'
     MP_FD = 'multipart/form-data'
 
