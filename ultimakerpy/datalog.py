@@ -60,10 +60,12 @@ class DataLogger:
                 rets = [f() for f in self.funcs.values()]
             valdict = {}
             for ret, name in zip(rets, self.funcs.keys()):
-                if isinstance(ret, FutureResult):
-                    val = ret.get()
+                t = type(ret)
+                if t in (list, tuple):
+                    val = t((r.get() if type(r) == FutureResult else r \
+                             for r in ret))
                 else:
-                    val = ret
+                    val = ret.get() if t == FutureResult else ret
                 valdict[name] = val
             self.__valdict = valdict
             self.__writer.writerow(valdict.values())
