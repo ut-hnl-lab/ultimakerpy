@@ -59,12 +59,12 @@
                                         "inputlim": [0.05, 216.0]
                                     },
                                     {
-                                        "path": "/speed",
+                                        "path": "/max_speed",
                                         "label": "speed",
                                         "category": "head"
                                     },
                                     {
-                                        "path": "/speed",
+                                        "path": "/max_speed",
                                         "label": "speed",
                                         "category": "bed"
                                     },
