@@ -1,7 +1,7 @@
 import atexit
 from datetime import datetime
 import subprocess
-from typing import BinaryIO, Dict, Optional
+from typing import BinaryIO, Dict, Optional, Tuple
 
 from .client import UMClient
 from .const import CAMSTREAM_PY_PATH, Ctype
@@ -173,6 +173,11 @@ class Head:
                          headers={'Content-Type': Ctype.APP_JSON,
                                   'Accept': Ctype.APP_JSON})
 
+    def position(self) -> Tuple[float, float]:
+        res = self._client.get(self._url['pos'],
+                               headers={'Accept': Ctype.APP_JSON})
+        return (res['x'], res['y'])
+
     def position_x(self) -> float:
         return self._client.get(self._url['pos_x'],
                                 headers={'Accept': Ctype.APP_JSON})
@@ -180,6 +185,11 @@ class Head:
     def position_y(self) -> float:
         return self._client.get(self._url['pos_y'],
                                 headers={'Accept': Ctype.APP_JSON})
+
+    def max_speed(self) -> Tuple[float, float]:
+        res = self._client.get(self._url['speed'],
+                               headers={'Accept': Ctype.APP_JSON})
+        return (res['x'], res['y'])
 
     def max_speed_x(self) -> float:
         return self._client.get(self._url['speed_x'],
@@ -192,6 +202,11 @@ class Head:
     def accel(self) -> float:
         return self._client.get(self._url['accel'],
                                 headers={'Accept': Ctype.APP_JSON})
+
+    def jerk(self) -> Tuple[float, float]:
+        res = self._client.get(self._url['jerk'],
+                               headers={'Accept': Ctype.APP_JSON})
+        return (res['x'], res['y'])
 
     def jerk_x(self) -> float:
         return self._client.get(self._url['jerk_x'],
