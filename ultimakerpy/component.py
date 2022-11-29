@@ -111,12 +111,24 @@ class Bed:
                          headers={'Content-Type': Ctype.APP_JSON,
                                   'Accept': Ctype.APP_JSON})
 
+    def heat_by(self, value: float) -> None:
+        new = self.target_temperature() + value
+        self.heat_to(value=new)
+
+    def move_by(self, value: float) -> None:
+        new = self.position() + value
+        self.move_to(value=new)
+
     def temperature(self) -> float:
         return self._client.get(self._url['cur_temp'],
                                 headers={'Accept': Ctype.APP_JSON})
 
     def target_temperature(self) -> float:
         return self._client.get(self._url['tgt_temp'],
+                                headers={'Accept': Ctype.APP_JSON})
+
+    def preheat_temperature(self) -> float:
+        return self._client.get(self._url['pre_temp'],
                                 headers={'Accept': Ctype.APP_JSON})
 
     def position(self) -> float:
@@ -172,6 +184,17 @@ class Head:
         self._client.put(self._url['jerk'], {'x': x_value, 'y': y_value},
                          headers={'Content-Type': Ctype.APP_JSON,
                                   'Accept': Ctype.APP_JSON})
+
+    def move_by(
+            self,
+            x_value: Optional[float] = None,
+            y_value: Optional[float] = None) -> None:
+        x_new, y_new = None, None
+        if x_value is not None:
+            x_new = self.position_x() + x_value
+        if y_value is not None:
+            y_new = self.position_y() + y_value
+        self.move_to(x_value=x_new, y_value=y_new)
 
     def position(self) -> Tuple[float, float]:
         res = self._client.get(self._url['pos'],
@@ -267,6 +290,10 @@ class Nozzle:
         self._client.put(self._url['tgt_temp'], value,
                          headers={'Content-Type': Ctype.APP_JSON,
                                   'Accept': Ctype.APP_JSON})
+
+    def heat_by(self, value: float) -> None:
+        new = self.target_temperature() + value
+        self.heat_to(value=new)
 
     def temperature(self) -> float:
         return self._client.get(self._url['cur_temp'],
