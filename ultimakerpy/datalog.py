@@ -18,6 +18,7 @@ class DataLogger:
         self._client = client
         self.output_csv = output_csv
         self.logging_interval = logging_interval
+        self._callbacks = []
         self.__valdict = None
         self.__thread = None
         self.__loop_alive = False
@@ -43,6 +44,8 @@ class DataLogger:
             f = open(self.output_csv, 'a', newline='')
             self.__writer = csv.writer(f)
             self.__writer.writerow(self.funcs.keys())
+            self.add_callback(
+                lambda: self.__writer.writerow(self.__valdict.values()))
 
             self.__thread = threading.Thread(target=self.update)
             self.__loop_alive = True
@@ -58,6 +61,7 @@ class DataLogger:
         def main():
             with self._client.batch_mode():
                 rets = [f() for f in self.funcs.values()]
+
             valdict = {}
             for ret, name in zip(rets, self.funcs.keys()):
                 t = type(ret)
@@ -68,7 +72,9 @@ class DataLogger:
                     val = ret.get() if t == FutureResult else ret
                 valdict[name] = val
             self.__valdict = valdict
-            self.__writer.writerow(valdict.values())
+
+            for cb in self._callbacks:
+                cb()
 
         while self.__loop_alive:
             t1 = time.perf_counter()
@@ -78,3 +84,6 @@ class DataLogger:
 
     def get_timer(self) -> 'Timer':
         return self._timer
+
+    def add_callback(self, func) -> None:
+        self._callbacks.append(func)
