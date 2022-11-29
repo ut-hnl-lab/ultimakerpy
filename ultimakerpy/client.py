@@ -160,10 +160,10 @@ class FutureResult:
 
     def __init__(self):
         self.__value = None
-        self.__slice = None
+        self.__slice_items = []
 
     def __getitem__(self, item):
-        self.__slice = item
+        self.__slice_items.append(item)
         return self
 
     def store(self, value: Any) -> None:
@@ -174,6 +174,6 @@ class FutureResult:
     def get(self) -> None:
         if self.__value is None:
             raise FutureResultError('value not stored')
-        if self.__slice is not None:
-            return self.__value[self.__slice]
+        if self.__slice_items is not None:
+            return self.__value[self.__slice_items.pop(0)]
         return self.__value
