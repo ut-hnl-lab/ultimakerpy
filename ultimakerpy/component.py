@@ -83,7 +83,7 @@ class Bed:
     def heat_to(self, value: float) -> None:
         _validate_range(value, *self._lim['tgt_temp'])
         self._client.put(self._url['tgt_temp'], value,
-                         headers={'Content-Type': Ctype.MP_FD,
+                         headers={'Content-Type': Ctype.APP_JSON,
                                   'Accept': Ctype.APP_JSON})
 
     def preheat_to(self, value: float, timeout: Optional[float] = None) -> None:
@@ -265,7 +265,7 @@ class Nozzle:
     def heat_to(self, value: float) -> None:
         _validate_range(value, *self._lim['tgt_temp'])
         self._client.put(self._url['tgt_temp'], value,
-                         headers={'Content-Type': Ctype.MP_FD,
+                         headers={'Content-Type': Ctype.APP_JSON,
                                   'Accept': Ctype.APP_JSON})
 
     def temperature(self) -> float:
