@@ -174,6 +174,6 @@ class FutureResult:
     def get(self) -> None:
         if self.__value is None:
             raise FutureResultError('value not stored')
-        if self.__slice_items is not None:
+        if len(self.__slice_items) > 0:
             return self.__value[self.__slice_items.pop(0)]
         return self.__value
