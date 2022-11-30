@@ -43,7 +43,7 @@ class UMClient:
             return self._rclient.get(url, headers=headers)
         else:
             self._bclient.register_get(url, headers=headers)
-            return self.__generate_future_check_result()
+            return self.__generate_future_result()
 
     def put(
             self, url: str, data: Optional[Any] = None,
@@ -66,7 +66,7 @@ class UMClient:
         if data is not None: data = json.dumps(data)
         return self._rclient.post(url, data=data, files=files, headers=headers)
 
-    def __generate_future_check_result(self) -> 'FutureResult':
+    def __generate_future_result(self) -> 'FutureResult':
         future_result = FutureResult()
         self.__future_results.append(future_result)
         return future_result
